@@ -12,25 +12,23 @@ struct MovieGridCard: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
-            // Film Resmi - DİK DİKDÖRTGEN (PORTRAIT)
             AsyncImage(url: URL(string: "http://kasimadalan.pe.hu/movies/images/\(movie.image ?? "")")) { image in
                 image.resizable()
                     .scaledToFill()
-                    .frame(width: (UIScreen.main.bounds.width / 2) - 24, height: 280) // DAHA UZUN BOY
+                    .frame(width: (UIScreen.main.bounds.width / 2) - 24, height: 280)
                     .clipped()
                     .cornerRadius(12)
             } placeholder: {
                 Rectangle()
                     .fill(AppColors.background.opacity(0.5))
-                    .frame(width: (UIScreen.main.bounds.width / 2) - 24, height: 280) // DAHA UZUN BOY
+                    .frame(width: (UIScreen.main.bounds.width / 2) - 24, height: 280)
                     .cornerRadius(12)
                     .overlay(
                         ProgressView()
                             .scaleEffect(1.5)
                     )
             }
-            
-            // Film Bilgileri
+
             VStack(alignment: .leading, spacing: 6) {
                 Text(movie.name ?? "İsimsiz")
                     .font(.system(size: 14, weight: .bold))
@@ -67,7 +65,7 @@ struct MovieGridCard: View {
         .shadow(color: .black.opacity(0.1), radius: 3, x: 0, y: 2)
         .overlay(
             RoundedRectangle(cornerRadius: 12)
-                .stroke(AppColors.mainColor.opacity(0.2), lineWidth: 1) // Hafif border
+                .stroke(AppColors.mainColor.opacity(0.2), lineWidth: 1) 
         )
         .padding(4)
     }

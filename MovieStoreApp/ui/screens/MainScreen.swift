@@ -23,7 +23,6 @@ struct MainScreen: View {
                             .foregroundColor(AppColors.textColor2)
                     } else {
                         VStack(spacing: 0) {
-                            // Kategoriler
                             ScrollView(.horizontal, showsIndicators: false) {
                                 HStack(spacing: 12) {
                                     ForEach(getAllCategories(), id: \.self) { category in
@@ -47,8 +46,7 @@ struct MainScreen: View {
                                 .padding(.vertical, 12)
                             }
                             .background(AppColors.cardBackground)
-                            
-                            // Film Grid
+
                             ScrollView {
                                 LazyVGrid(columns: [
                                     GridItem(.flexible()),
@@ -82,22 +80,19 @@ struct MainScreen: View {
             }
         }
         .searchable(text: $searchText, prompt: "Film ara...")
-        .searchable(text: $searchText, prompt: "Film ara...")
-        .foregroundColor(AppColors.textColor) // Arama metni rengi
+        .foregroundColor(AppColors.textColor)
         .onChange(of: searchText) { _, result in
             Task {
                 await viewModel.searchMovies(searchText: result)
             }
         }
     }
-    
-    // Kategorileri getir
+
     private func getAllCategories() -> [String] {
         let categories = Set(viewModel.moviesList.compactMap { $0.category })
         return ["Tümü"] + categories.sorted()
     }
-    
-    // Kategoriye göre filmleri filtrele
+
     private func getMoviesByCategory(_ category: String) -> [Movies] {
         if category == "Tümü" {
             return viewModel.moviesList

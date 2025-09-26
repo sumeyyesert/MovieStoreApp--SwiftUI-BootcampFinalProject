@@ -19,7 +19,7 @@ struct CartListItem: View {
                     .cornerRadius(8)
             } placeholder: {
                 Rectangle()
-                    .fill(AppColors.background.opacity(0.3)) // Arkaplan rengiyle uyumlu
+                    .fill(AppColors.background.opacity(0.3))
                     .frame(width: 60, height: 90)
                     .cornerRadius(8)
             }
@@ -27,22 +27,22 @@ struct CartListItem: View {
             VStack(alignment: .leading, spacing: 4) {
                 Text(item.name ?? "İsimsiz")
                     .font(.headline)
-                    .foregroundColor(AppColors.textColor) // Ana yazı rengi
+                    .foregroundColor(AppColors.textColor)
                 
                 Text("Adet: \(item.orderAmount ?? 1)")
                     .font(.subheadline)
-                    .foregroundColor(AppColors.textColor2) // İkincil yazı rengi
+                    .foregroundColor(AppColors.textColor2)
                 
                 Text("Toplam: \((item.price ?? 0) * (item.orderAmount ?? 1)) TL")
                     .font(.subheadline)
-                    .foregroundColor(AppColors.mainColor) // Ana renk (fiyat vurgusu)
+                    .foregroundColor(AppColors.mainColor) 
                     .fontWeight(.semibold)
             }
             
             Spacer()
         }
         .padding(.vertical, 8)
-        .background(AppColors.background) // Kart arkaplan rengi
+        .background(AppColors.background)
         .cornerRadius(12)
         .padding(.horizontal, 4)
     }
@@ -50,5 +50,5 @@ struct CartListItem: View {
 
 #Preview {
     CartListItem(item: MovieCart())
-        .background(AppColors.background) // Preview'da da arkaplanı göster
+        .background(AppColors.background) 
 }

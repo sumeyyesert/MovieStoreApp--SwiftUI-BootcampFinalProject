@@ -17,7 +17,6 @@ struct MovieDetailsScreen: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
-                // Film Poster
                 AsyncImage(url: URL(string: "http://kasimadalan.pe.hu/movies/images/\(movie.image ?? "")")) { image in
                     image.resizable()
                         .scaledToFit()
@@ -29,10 +28,7 @@ struct MovieDetailsScreen: View {
                         .frame(height: 400)
                         .overlay(ProgressView())
                 }
-                
-                // Film Bilgileri
                 VStack(alignment: .leading, spacing: 16) {
-                    // Film Başlık ve Favori Butonu
                     HStack {
                         Text(movie.name ?? "İsimsiz Film")
                             .font(.title)
@@ -54,7 +50,6 @@ struct MovieDetailsScreen: View {
                         }
                     }
                     
-                    // Film Detayları
                     HStack(spacing: 16) {
                         HStack {
                             Image(systemName: "calendar")
@@ -74,7 +69,6 @@ struct MovieDetailsScreen: View {
                     .font(.subheadline)
                     .foregroundColor(AppColors.textColor2)
                     
-                    // Rating ve Fiyat
                     HStack {
                         HStack(spacing: 4) {
                             Image(systemName: "star.fill")
@@ -92,7 +86,6 @@ struct MovieDetailsScreen: View {
                             .foregroundColor(AppColors.mainColor)
                     }
                     
-                    // Açıklama
                     VStack(alignment: .leading, spacing: 8) {
                         Text("Overview")
                             .font(.headline)
@@ -105,7 +98,6 @@ struct MovieDetailsScreen: View {
                             .lineSpacing(4)
                     }
                     
-                    // Yönetmen
                     HStack {
                         Text("Yönetmen:")
                             .fontWeight(.medium)
@@ -117,12 +109,10 @@ struct MovieDetailsScreen: View {
                 }
                 .padding(.horizontal)
                 
-                // Sepete Ekleme Bölümü
                 VStack(spacing: 16) {
                     Divider()
                         .background(AppColors.textColor2.opacity(0.3))
                     
-                    // Adet Seçimi
                     HStack {
                         Text("Adet:")
                             .fontWeight(.medium)
@@ -157,7 +147,6 @@ struct MovieDetailsScreen: View {
                         }
                     }
                     
-                    // Sepete Ekle Butonu
                     Button(action: {
                         Task {
                             await viewModel.addToCart(movie: movie, quantity: quantity)
@@ -184,7 +173,7 @@ struct MovieDetailsScreen: View {
                 .padding(.horizontal)
             }
         }
-        .background(AppColors.background)
+        .background(AppColors.background.ignoresSafeArea())
         .navigationTitle("Film Detayı")
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(true)

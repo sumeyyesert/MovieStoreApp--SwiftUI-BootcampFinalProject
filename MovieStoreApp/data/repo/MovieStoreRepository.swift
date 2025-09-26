@@ -13,7 +13,6 @@ class MovieStoreRepository {
     private let favoritesKey: String
     
     init() {
-        // init içinde userName'i kullanabiliriz
         self.favoritesKey = "favoriteMovies_\(userName)"
     }
     
@@ -111,8 +110,7 @@ class MovieStoreRepository {
     
     func addToFavorites(movie: Movies) -> Bool {
         var favorites = getFavorites()
-        
-        // Zaten favoride mi kontrol et
+
         if !favorites.contains(where: { $0.id == movie.id }) {
             favorites.append(movie)
             

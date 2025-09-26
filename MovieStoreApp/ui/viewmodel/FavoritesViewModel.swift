@@ -19,7 +19,7 @@ class FavoritesViewModel: ObservableObject {
     func addToFavorites(movie: Movies) -> Bool {
         let success = repository.addToFavorites(movie: movie)
         if success {
-            loadFavorites() // Listeyi güncelle
+            loadFavorites()
         }
         return success
     }
@@ -27,7 +27,7 @@ class FavoritesViewModel: ObservableObject {
     func removeFromFavorites(movieId: Int) -> Bool {
         let success = repository.removeFromFavorites(movieId: movieId)
         if success {
-            loadFavorites() // Listeyi güncelle
+            loadFavorites() 
         }
         return success
     }
